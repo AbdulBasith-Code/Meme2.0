@@ -179,8 +179,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     func generateMemedImage() -> UIImage {
 
-        topToolBar.isHidden = true
-        bottomToolBar.isHidden = true
+		hideAndShowBars(true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -188,11 +187,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
 
-        topToolBar.isHidden = false
-        bottomToolBar.isHidden = false
+		hideAndShowBars(false)
 
         return memedImage
     }
+
+	func hideAndShowBars(_ hide: Bool) {
+		topToolBar.isHidden = hide
+		bottomToolBar.isHidden = hide
+	}
 
 }
 
